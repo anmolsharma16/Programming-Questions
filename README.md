@@ -1,2 +1,2 @@
-# DSA-LeetCode
-This repository contains solved questions of leetcode.
+# Programming Questions
+This repository contains solved programming questions from numerous online platforms.
