@@ -1,0 +1,89 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct Node{
+    
+    int data;
+    Node* left;
+    Node* right;
+    
+    Node(int x){
+        data=x;
+        left=right=NULL;
+    }
+};
+
+
+void LevelOrderTraversal(Node* root){
+    
+    if(root==NULL)
+    return;
+    queue<Node*> q;
+    q.push(root);
+    
+    while(q.empty()==false){
+        
+        Node* temp=q.front();
+        q.pop();
+        if(temp->left){
+            q.push(temp->left);
+        }
+        if(temp->right){
+            q.push(temp->right);
+        }
+        cout<<temp->data<<" ";
+        
+    }
+}
+
+
+void LevelOrderTraversalLinebyLine(Node* root){
+    
+    if(root==NULL)
+    return;
+    queue<Node*> q;
+    q.push(root);
+    //Push extra null here
+    q.push(NULL);
+    
+    //Note:one null will always be left in the queue so if you
+    //write q.empty()==false this will lead to infinite loop
+    //so run while till atleast two elements are thhere
+    while(q.size()>1){
+        
+        Node* temp=q.front();
+        q.pop();
+        
+        if(temp==NULL){
+            cout<<endl;
+            q.push(NULL);
+            //Note:Since temp is null, null->left=error 
+            //so continue(common sense)
+            continue;
+        }
+        if(temp->left){
+            q.push(temp->left);
+        }
+        if(temp->right){
+            q.push(temp->right);
+        }
+        cout<<temp->data<<" ";
+        
+    }
+}
+
+
+int main(){
+    
+    Node*root= new Node(1);
+    root->left=new Node(2);
+    root->right=new Node(3);
+    root->left->left=new Node(4);
+    root->left->right=new Node(5);
+    root->right->left=new Node(6);
+    root->right->right=new Node(7);
+    
+    LevelOrderTraversalLinebyLine(root);
+}
+
+
