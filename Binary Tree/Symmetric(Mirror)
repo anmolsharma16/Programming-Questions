@@ -1,0 +1,24 @@
+bool check(Node*root1, Node*root2){
+    
+  if(root1==NULL && root2==NULL)
+  return true;
+  
+    if((root1->data == root2->data) && check(root1->left,root2->right) && check(root1->right,root2->left))
+    return true;
+    
+    
+    return false;
+    
+    
+}
+//For identical tree do check(left,left) and check(right,right)
+
+// return true/false denoting whether the tree is Symmetric or not
+bool isSymmetric(struct Node* root)
+{
+   
+     if(root==NULL)
+    return true;
+    
+	return check(root,root);
+}
