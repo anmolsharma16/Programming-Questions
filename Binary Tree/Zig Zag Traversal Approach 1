@@ -1,0 +1,38 @@
+//Function to store the zig zag order traversal of tree in a list.
+//This code can also be used for level order traversal line by line
+//Instead of pushing NULL. we can find size of the queue and utni baar hi access via for loop.
+//Just need to cout<<endl; after every end of for loop
+vector <int> zigZagTraversal(Node* root)
+{
+   	vector<int>v; 
+    if(root==NULL)
+    return v;
+	stack<int>s;
+	queue<Node*>q;
+	q.push(root);
+	bool reverse=false;
+	while(q.empty()==false){
+	    int total=q.size();
+	    for(int i=0;i<total;i++){
+	        Node*temp=q.front();
+	        q.pop();
+	        if(temp->left)
+	        q.push(temp->left);
+	        if(temp->right)
+	        q.push(temp->right);
+	        if(reverse){
+	            s.push(temp->data);
+	            continue;
+	        }
+	        v.push_back(temp->data);
+	    }
+	    if(reverse){
+	         while(s.empty()==false){
+	             v.push_back(s.top());
+	             s.pop();
+	         }
+	    }
+	    reverse=!reverse;
+	}
+	return v;
+}
