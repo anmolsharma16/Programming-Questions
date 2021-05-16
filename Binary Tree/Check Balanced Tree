@@ -1,0 +1,25 @@
+int height(Node*root){
+    
+    if(root==NULL)
+    return 0;
+    int lh=height(root->left);
+    //To ensure that -1 doesn't work as a height but as a sign that tree has
+    //failed balance property,we simply return -1
+    if(lh==-1)
+    return -1;
+    int rh=height(root->right);
+    if(rh==-1)
+    return -1;
+    
+    if(abs(rh-lh)>1)
+    return -1;
+    return 1+max(rh,lh);
+}
+
+bool isBalanced(Node *root)
+{
+    int x=height(root);
+    if(x==-1)
+    return false;
+    return true;
+}
