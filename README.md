@@ -1,2 +1,2 @@
 # Programming Questions
-This repository contains solved programming questions from numerous online platforms.
+This repository contains solved programming questions from numerous online platforms like Leetcode and Geeksforgeeks.
