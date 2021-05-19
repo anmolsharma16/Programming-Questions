@@ -1,0 +1,32 @@
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        
+    if(head==NULL)
+    return NULL;
+   // Here we need dummy node and not dummy pointer as if first node itself has to be deleted, we have something to return as dummy->next which is most probably NULL if head is deleted.
+    ListNode*dummy=new ListNode();
+    dummy->next=head;
+    ListNode* ahead=dummy;
+    ListNode* behind=dummy;
+    
+    for(int i=1;i<=n;i++){  
+        ahead=ahead->next;
+    }
+    while(ahead->next){
+        ahead=ahead->next;
+        behind=behind->next;
+    }
+    
+   ListNode* garbage=behind->next;
+   behind->next=behind->next->next;
+   delete(garbage);
+    
+    // CRUX lies here
+    // Dont return head as when list has one element and int n=1, when we delete it,
+    // We need NULL as return but head is deleted so doesnot exist in memory
+    // we do behind->next=behind->next->next; sp dummy->next is set to NULL,so ret dumy.next
+   return dummy->next;
+   // return head;       
+    }
+};
