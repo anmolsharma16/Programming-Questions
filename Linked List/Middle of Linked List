@@ -1,0 +1,21 @@
+
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        
+        if(head==NULL || head->next==NULL)
+            return head;
+   
+            ListNode*slow=head;
+            ListNode*fast=head;
+        // For Odd Length , fast stops at last node so fast->next gives null and we stop
+        // For Even Length, fast crosses the list and points to null so fast->next=Error
+        // So then, fast==NULL comes handy
+        while(fast && fast->next){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        
+        return slow;
+    }
+};
