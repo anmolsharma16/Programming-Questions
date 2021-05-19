@@ -1,0 +1,24 @@
+class Solution
+{
+    public:
+    //Function to reverse a linked list.
+    struct Node* reverseList(struct Node *head)
+    {
+       if(head==NULL || head->next ==NULL)
+        return head;
+        // Dummy Pointer needs to be created in this
+        // Three pointers will do the job
+        // Dummy=prev of head and next=next of head
+       Node*dummy=NULL;
+       Node*next;
+       
+       while(head){
+           next=head->next;
+           head->next=dummy;
+           dummy=head;
+           head=next;
+       }
+        return head=dummy;
+    }
+};
+    
