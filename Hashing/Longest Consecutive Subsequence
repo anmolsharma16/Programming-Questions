@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        
+        int maxLength=0;
+        unordered_set<int>st;     
+      // Iteration One: Inserted all elements into the hashtable
+        for(int num : nums)
+            st.insert(num);
+        
+      /* Iteration Two: For every element of the vector, check if it can be the first 
+         of the consecutive sequence[This is the crux to avoid O(N2)]*/
+        
+        for(int num:st)
+        {
+      // If not , move to next element
+        if(st.find(num-1)!=st.end())
+                  continue;
+            
+      // If yes, take a total count of all the consecutive terms present       
+        else{
+            
+            int currLength=1;
+            int currElement=num;
+            while(st.find(++currElement)!=st.end())
+                currLength++;         
+            maxLength=max(maxLength,currLength);          
+             } 
+        }       
+        return maxLength;        
+    }
+};
