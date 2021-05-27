@@ -1,0 +1,24 @@
+int maxLen(int A[], int n)
+{
+    unordered_map<int,int>mp;
+    int currSum=0;
+    int maxLength=0;
+    for(int i=0;i<n;i++)
+    {
+        currSum+=A[i];
+       // This is v.imp corner case
+       // The algo fails if entire sum of array = 0 so, check that first of all
+        if(currSum==0)
+         maxLength = i+1;
+        
+        if(mp.find(currSum)!=mp.end()){
+            
+            int length = i-mp[currSum];
+            maxLength=max(maxLength,length);
+            continue;
+            
+        }
+        mp[currSum]=i;
+    }
+    return maxLength;
+}
