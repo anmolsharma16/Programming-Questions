@@ -1,0 +1,30 @@
+/************************************************
+Graph Structure  : Method 2 - Adjacency List
+Space Complexity : N size array + 2E(Every edge stored twice in undirected graph) = o(N+2E)
+*************************************************/
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int totalNodes,totalEdges;
+    cin>>totalNodes>>totalEdges;
+    
+    // totalNodes+1 cos assuming one based indexing(Node 1 to Node k) and array has zero based
+    // so to access Node k we need arr[k]--> only possible if arr has atleast k+1 size
+    vector<int> graph[totalNodes+1]; // vector<pair<int,int>> graph[totalNodes+1] for weighted graph
+    for(int i=0;i<totalEdges;i++)
+    {
+        int u,v;
+        cin>>u>>v;
+        graph[u].push_back(v);  // graph[u].push_back(v,w); for weighted graph
+        graph[v].push_back(u); // skip for directed
+    }
+    for(int i=0;i<totalNodes+1;i++){
+       cout << "\n Adjacency list of vertex " << i << endl;
+        for (auto x : graph[i])
+           cout << "-> " << x;
+        printf("\n");
+    }
+    return 0;
+}
