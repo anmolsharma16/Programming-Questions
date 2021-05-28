@@ -29,8 +29,8 @@ int main()
     
     
     // Printing a graph
-    for(int i=0;i<totalEdges+1;i++){
-        for(int j=0;j<totalEdges+1;j++){
+    for(int i=0;i<totalNodes+1;i++){
+        for(int j=0;j<totalNodes+1;j++){
             
             if(graph[i][j] ==1 ){
                 cout<<"Edge :"<< i <<"<-->"<< j <<endl;
