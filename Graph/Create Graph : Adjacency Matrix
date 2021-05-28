@@ -1,0 +1,42 @@
+/************************************************
+Graph Structure : Method 1- Adjacency Matrix
+Space Complexity : O(N^2)
+*************************************************/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int totalNodes,totalEdges;
+    cout<<"Enter total nodes and total edges"<<endl;
+    cin>>totalNodes>>totalEdges;
+    
+    // Declaring the Adjacency Matrix
+    // Why totalNodes+1 : Assuming Nodes are indexed as 1,2---5.
+    // So to link edges with node 5, I need index 5 i.e matrix of size 6 will have index 5 :)
+    int graph[totalNodes+1][totalNodes+1];
+    
+    // Taking edges as input
+    cout<<"Enter "<<totalEdges<<" Edges "<<endl;
+    for(int i=0;i<totalEdges;i++)
+    {
+        int u,v;
+        cin>>u>>v;
+        graph[u][v]=1; 
+        graph[v][u]=1; // Skip this for directed graph
+    }
+    
+    
+    // Printing a graph
+    for(int i=0;i<totalEdges+1;i++){
+        for(int j=0;j<totalEdges+1;j++){
+            
+            if(graph[i][j] ==1 ){
+                cout<<"Edge :"<< i <<"<-->"<< j <<endl;
+            }
+        }
+    }
+
+    return 0;
+}
