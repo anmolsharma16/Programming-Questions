@@ -1,0 +1,24 @@
+// Approach 1: Simple Sort O(nlogn)
+// Approach 2: Count Sort O(n+n)
+/* Aproach 3: Start se pehle sare shd be 0. On getting 1, move ahead,on 0,
+   swap with start and increment start and mid, on 2 ,swap mid and last,
+   decrement last but dont increment mid as we dont know what has last returned */
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        
+        int start=0,mid=0,last=nums.size()-1;      
+        while(mid<=last){
+            
+            if(nums[mid] == 1){
+                mid++;
+            }        
+            else if(nums[mid] == 0){
+                swap(nums[start++],nums[mid++]);
+            }     
+            else
+                swap(nums[mid],nums[last--]);
+         }
+    }
+};
